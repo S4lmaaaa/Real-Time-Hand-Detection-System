@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "handtrack"
+version = "0.1.0"
+description = "Real-time hand detection, landmark tracking and gesture recognition with MediaPipe and OpenCV"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = { text = "MIT" }
+dependencies = ["mediapipe>=0.10.30", "opencv-python>=4.8"]
+
+[project.optional-dependencies]
+web = ["streamlit>=1.35", "streamlit-webrtc>=0.47"]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+handtrack = "handtrack.app:main"
+
+[tool.setuptools.packages.find]
+include = ["handtrack*"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
